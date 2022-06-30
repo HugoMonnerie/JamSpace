@@ -2,6 +2,8 @@ import './App.css';
 
 let users = require('./component/data/data.json');
 
+console.log(users)
+
 const listUserName = users.map((user) =>
     <li key={user.id}>{user.name}</li>
 );
@@ -48,7 +50,8 @@ uniqueDepartments.forEach((department) => {
             }
 
             //nameUniqueDepartment = new Map({'department': data['nom']});
-            nameUniqueDepartment.push(data['nom']);
+            //nameUniqueDepartment.push(data['nom']);
+            nameUniqueDepartment.push({'index': data['code'],'department': data['nom']});
         })
         .catch((error) => {
             console.error(error);
@@ -57,13 +60,11 @@ uniqueDepartments.forEach((department) => {
 
 console.log('nameUniqueDepartment', nameUniqueDepartment)
 
-/*const [value, setValue] = React.useState('rien');
+/*const [value, setValue] = React.useState('');
 
 const handleChange = (event) => {
     setValue(event.target.value);
 };*/
-
-
 
 /*const department = [];
 
@@ -79,11 +80,16 @@ console.log('department', department)*/
         <option value={nameDepartment}>{`${nameDepartment}: ${nameUniqueDepartment[nameDepartment]}`}</option>
     );
 });*/
-function selector() {
+
+/*function selector() {
     for (let i = 0; i < 22; i++) {
         <option value={nameUniqueDepartment[i]}>{nameUniqueDepartment[i]}</option>
     }
-}
+}*/
+
+const listDepartmentName = nameUniqueDepartment.map((item) =>
+    <option value={item.index}>{item.department}</option>
+);
 
 function App() {
   return (
@@ -92,7 +98,7 @@ function App() {
           <label>
               Filtrer par département :
               <select>
-                  {selector}
+                  {listDepartmentName}
               </select>
           </label>
       </div>
