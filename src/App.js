@@ -2,19 +2,17 @@ import './App.css';
 
 let users = require('./component/data/data.json');
 
-console.log(users)
-
 const listUserName = users.map((user) =>
     <li key={user.id}>{user.name}</li>
 );
 
 /*function searchUser(department) {
-    /*users.map((user) =>
-        user['departments'].forEach(departmentUser => {
-            if (departmentUser === department) {
-                console.log(user.name)
+    users.map((user) =>
+        user['departments'].map((departmentUser) => {
+            if (departmentUser.toString() === department) {
+                <li key={user.id}>{user.name}</li>
             }
-        }),
+        })
     );
 }*/
 
@@ -34,7 +32,7 @@ listDepartment.forEach((department, id) => {
     }
 })
 
-console.log('uniqueDepartments', uniqueDepartments)
+//console.log('uniqueDepartments', uniqueDepartments)
 
 let nameUniqueDepartment = [];
 
@@ -58,7 +56,7 @@ uniqueDepartments.forEach((department) => {
         });
 })
 
-console.log('nameUniqueDepartment', nameUniqueDepartment)
+//console.log('nameUniqueDepartment', nameUniqueDepartment)
 
 /*const [value, setValue] = React.useState('');
 
