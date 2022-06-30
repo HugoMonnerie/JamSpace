@@ -18,7 +18,7 @@ const listUserName = users.map((user) =>
     );
 }*/
 
-var listDepartment = [];
+const listDepartment = [];
 
 users.forEach(user =>
     user['departments'].forEach(department => {
@@ -66,30 +66,13 @@ const handleChange = (event) => {
     setValue(event.target.value);
 };*/
 
-/*const department = [];
-
-for (var i=0; i<nameUniqueDepartment.length; i++) {
-    console.log('bli');
-    department.push(nameUniqueDepartment[i]);
-}
-
-console.log('department', department)*/
-
-/*let nameDepartments = Object.keys(nameUniqueDepartment).map(nameDepartment => {
-    return (
-        <option value={nameDepartment}>{`${nameDepartment}: ${nameUniqueDepartment[nameDepartment]}`}</option>
-    );
-});*/
-
-/*function selector() {
-    for (let i = 0; i < 22; i++) {
-        <option value={nameUniqueDepartment[i]}>{nameUniqueDepartment[i]}</option>
-    }
-}*/
-
-const listDepartmentName = nameUniqueDepartment.map((item) =>
+/*const listDepartmentName = nameUniqueDepartment.map((item) =>
     <option value={item.index}>{item.department}</option>
-);
+);*/
+
+const handleChange = event => {
+    console.log(event.target.value);
+};
 
 function App() {
   return (
@@ -97,8 +80,12 @@ function App() {
           <ul>{listUserName}</ul>
           <label>
               Filtrer par département :
-              <select>
-                  {listDepartmentName}
+              <select onChange={handleChange} name="departments" id="department-select">
+                  {nameUniqueDepartment.map((value) =>
+                      <option key={value.index} value={value.index}>
+                          {value.department}
+                      </option>
+                  )}
               </select>
           </label>
       </div>
